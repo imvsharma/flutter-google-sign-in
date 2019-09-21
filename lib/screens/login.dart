@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../helpers/signin.dart';
+import './profile.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -31,7 +33,11 @@ class _LoginPageState extends State<Login> {
     return OutlineButton(
       splashColor: Colors.grey,
       onPressed: () {
-
+        signinWithGoogle().whenComplete(() {
+          Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+            return Profile();
+          }));
+        });
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
